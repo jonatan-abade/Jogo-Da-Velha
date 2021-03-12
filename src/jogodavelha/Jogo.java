@@ -24,30 +24,77 @@ public class Jogo {
     }
 
     //Metodo que escolhe uma posição do jogo caso não ainda não esteja preenchido
-    boolean escolha(int l, int c) {
+    void escolha(int l, int c) {
         if (!ocupado(l, c)) {
             posMatriz[l][c] = "X";
-            return true;
+            escolhaMaquina();
         } else {
-            return false;
+            System.out.println("Escolha um campo vazio!!!");
         }
     }
 
     //Metodo que faz com que o sistema escolha uma posição aletóriamente na sua vez
-    boolean escolhaMaquina() {
+    void escolhaMaquina() {
         Random rand = new Random();
-
         int range = 2;
-
         int l = rand.nextInt(range + 1);
         int c = rand.nextInt(range + 1);
 
-        if (!"X".equals(posMatriz[l][c])) {
+        if (!posMatriz[l][c].equals("X")) {
             posMatriz[l][c] = "Y";
-            return true;
         } else {
-            return false;
+            l = rand.nextInt(range + 1);
+            c = rand.nextInt(range + 1);
         }
+    }
+
+    boolean haveVencedor() {
+        int op;
+        boolean haveWinn = false;
+        if (posMatriz[0][0].equals("X") && posMatriz[0][1].equals("X") && posMatriz[0][2].equals("X")) {
+            mostraGame();
+            System.out.println("Você venceu");
+            haveWinn = true;
+        }
+        if (posMatriz[1][0].equals("X") && posMatriz[1][1].equals("X") && posMatriz[1][2].equals("X")) {
+            mostraGame();
+            System.out.println("Você venceu");
+            haveWinn = true;
+        }
+        if (posMatriz[2][0].equals("X") && posMatriz[2][1].equals("X") && posMatriz[2][2].equals("X")) {
+            mostraGame();
+            System.out.println("Você venceu");
+            haveWinn = true;
+        }
+        if (posMatriz[0][0].equals("X") && posMatriz[1][0].equals("X") && posMatriz[2][0].equals("X")) {
+            mostraGame();
+            System.out.println("Você venceu");
+            haveWinn = true;
+        }
+        if (posMatriz[0][1].equals("X") && posMatriz[1][1].equals("X") && posMatriz[2][1].equals("X")) {
+            mostraGame();
+            System.out.println("Você venceu");
+            haveWinn = true;
+        }
+        if (posMatriz[0][2].equals("X") && posMatriz[1][2].equals("X") && posMatriz[2][2].equals("X")) {
+            mostraGame();
+            System.out.println("Você venceu");
+            haveWinn = true;
+        }
+
+        if (posMatriz[0][0].equals("X") && posMatriz[1][1].equals("X") && posMatriz[2][2].equals("X")) {
+            mostraGame();
+            System.out.println("Você venceu");
+            haveWinn = true;
+        }
+
+        if (posMatriz[0][2].equals("X") && posMatriz[1][1].equals("X") && posMatriz[2][0].equals("X")) {
+            mostraGame();
+            System.out.println("Você venceu");
+            haveWinn = true;
+        }
+        return haveWinn;
+
     }
 
 }

@@ -14,7 +14,7 @@ public class JogoDaVelha {
         do {
             game.mostraGame();
 
-            System.out.print("Escolha um numero de 1 a 9: ");
+            System.out.print("Escolha uma posição do jogo");
             op = sc.nextInt();
 
             switch (op) {
@@ -49,9 +49,10 @@ public class JogoDaVelha {
                     System.out.println("Valor inválido!!!");
                     break;
             }
-
-            game.escolhaMaquina();
-
+            
+            if (game.haveVencedor()) {
+                break;
+            }
         } while (op != 0);
 
         sc.close();
